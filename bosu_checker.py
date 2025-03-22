@@ -9,10 +9,36 @@ class ResponseFormatter(BaseModel):
 
 
 def contains_bosu(text: str) -> bool:
+    """「母数」が含まれているかどうかを判定する関数
+
+    Parameters
+    ----------
+    text : str
+        テキスト
+
+    Returns
+    -------
+    bool
+        「母数」が含まれているかどうか
+    """
     return "母数" in text
 
 
-def ask_openai_about_bosu(text: str, model_name: str="gpt-4o-mini") -> str:
+def ask_openai_about_bosu(text: str, model_name: str="gpt-4o-mini") -> dict:
+    """OpenAIに「母数」について質問する関数
+
+    Parameters
+    ----------
+    text : str
+        テキスト
+    model_name : str
+        モデル名
+
+    Returns
+    -------
+    dict
+        OpenAIの回答(構造化済み)
+    """
     model = init_chat_model(
         model_name,
         model_provider="openai",
