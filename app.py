@@ -27,11 +27,11 @@ if st.button("チェック！"):
     elif not text.strip():
         st.warning("文章を入力してください。")
     elif not contains_bosu(text):
-        st.success("✅ 「母数」は含まれていません。問題なしです!")
+        st.success(":prompt_template: 「母数」は含まれていません。問題なしです!")
     else:
         with st.spinner("AIが判定中..."):
             result = ask_openai_about_bosu(text, model_name)
             if result["valid_flag"]:
-                st.success(f"✅ 「母数」は適切に使われています！\n\nAIの回答：{result["answer"]}")
+                st.success(f":prompt_template: 「母数」は適切に使われています！\n\nAIの回答：{result["answer"]}")
             else:
-                st.error(f"❌ 「母数」の使い方が適切ではありません。\n\nAIの回答：{result["answer"]}")
+                st.error(f":x: 「母数」の使い方が適切ではありません。\n\nAIの回答：{result["answer"]}")
