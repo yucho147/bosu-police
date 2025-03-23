@@ -48,5 +48,6 @@ def ask_openai_about_bosu(text: str, model_name: str="gpt-4o-mini") -> dict:
     )
     schema = ResponseFormatter.model_json_schema()
     model_with_structure = model.with_structured_output(schema)
+    chain = prompt_template | model_with_structure
 
-    return model_with_structure.invoke(prompt_template.invoke({"text": text}))
+    return chain.invoke({"text": text})
