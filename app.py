@@ -27,7 +27,7 @@ if st.button("チェック！"):
     elif not text.strip():
         st.warning("文章を入力してください。")
     elif not contains_bosu(text):
-        st.success(":prompt_template: 「母数」は含まれていません。問題なしです!")
+        st.success(":white_check_mark: 「母数」は含まれていません。問題なしです!")
     else:
         with st.spinner("AIが判定中..."):
             try:
@@ -36,6 +36,6 @@ if st.button("チェック！"):
                 st.error(f"エラーが発生しました: {e}")
                 st.stop()
             if result["valid_flag"]:
-                st.success(f":prompt_template: 「母数」は適切に使われています！\n\nAIの回答：{result['answer']}")
+                st.success(f":white_check_mark: 「母数」は適切に使われています！\n\nAIの回答：{result['answer']}")
             else:
                 st.error(f":x: 「母数」の使い方が適切ではありません。\n\nAIの回答：{result['answer']}")
